@@ -1,0 +1,53 @@
+module.exports = {
+  extends: 'standard',
+  plugins: [
+    'standard',
+    'promise',
+    'json'
+  ],
+  "rules": {
+    "no-path-concat": 0,
+    "operator-linebreak": 0,
+    "space-before-function-paren": 0
+  },
+  globals: {
+    App: true,
+    Page: true,
+    angular: true,
+    vm: true,
+    module: true,
+    inject: true,
+    $templateCache: true,
+    $log: true,
+    $q: true,
+    $timeout: true,
+    dataservice: true,
+    localStorage: true,
+    JSON: true,
+    alert: true,
+    protractor: true,
+    confirm: true,
+    it: true,
+    by: true,
+    expect: true,
+    beforeEach: true,
+    afterEach: true,
+    describe: true,
+    browser: true,
+    element: true,
+    bard: true,
+    mockData: true,
+    testUtil: true,
+    routerHelper: true,
+    $controller: true,
+    $rootScope: true,
+    $location: true,
+    $state: true,
+    $: true,
+    $$: true,
+    Hammer: true,
+    sinon: true,
+    jasmine: true,
+    arguments: true
+  }
+};

@@ -1,0 +1,3 @@
+function second() {
+  alert('test')
+}
