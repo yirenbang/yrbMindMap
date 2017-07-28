@@ -1,3 +1,0 @@
-function forth() {
-  alert('test')
-}

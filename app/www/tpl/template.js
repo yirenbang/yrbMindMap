@@ -1,3 +1,0 @@
-function template() {
-  alert('test')
-}
