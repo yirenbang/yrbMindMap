@@ -1,0 +1,169 @@
+.btnA{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+.btnB{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+.btnB span{
+	font-size: 12px;
+}
+.btnA span{
+	line-height: 110%;
+	font-size: 14px;
+}
+.divRight{
+	float: right;
+}
+.indicateBarBox{
+	width: 70%;
+	height: 4px;
+	border-radius: 2px;
+	background: #eee;
+}
+.indicateBar{
+	width: 20%;
+	height: 4px;
+	border-radius: 2px;
+	background: #f95959;
+}
+.infoBoxA{
+	padding-left: 20px;
+}
+.infoBoxA strong{
+	font-size: 8px !important;
+	color: #333;
+}
+.bigNum{
+	font-size: 20px;
+	color: #aaa;
+}
+.transBar{
+	background: transparent;
+	border: none;
+}
+.BtnMenu{
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: none;
+	box-shadow: 1px 1px 4px #999;
+	color: #f95959;	
+}
+
+.bar-footer .BtnMenu{
+	right: 20px !important;
+	top: -10px !important;
+}
+.bar-header .BtnMenuTopR{
+	right: 20px !important;
+	top: 20px !important;
+	font-size: 14px;
+	transition: all ease 0.3s;
+	transform: rotate(45deg);
+}
+.BtnMenuTopR1{
+	transition: all ease 0.3s;
+	transform: rotate(0deg);
+	
+}
+
+.bar-header .BtnMenuTopL{
+	left: 20px !important;
+	top: 20px !important;
+}
+.action-sheet{
+	padding:0;
+	margin:0;
+	background: rgba(255,255,255,0.9);
+}
+.action-sheet-options{
+	background: transparent;
+	margin-bottom: 0;
+}
+.action-sheet .button{
+	display: inline-block;
+	width: 50%;
+	height: 80px;
+	border: none;
+    color: #666 !important;
+    padding-left: 70px;
+    text-align: left;
+
+}
+.action-sheet .btnsi{
+	padding-left: 50px;
+}
+.action-sheet .button i{
+	margin-top: -20px;
+}
+
+/*导图第二页*/
+
+.cirlebox{
+	height: 100%;
+}
+.cirleline{
+	position: absolute;
+	width: 240px;
+	height: 240px;
+	top: 50%;
+	left: 50%;
+	margin-left: -120px;
+	margin-top: -120px;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+}
+.cirleline div{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -50px;
+}
+.btnbli{
+	position: absolute;
+	margin-top: -30px;
+	margin-left: -30px;
+}
+.addbtnB{
+	min-width: 16px;
+    min-height: 16px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	padding:0;
+	background-color: #ccc;
+	color: white;
+	line-height: 16px;
+	border:none;
+}
+.addli{
+	position: absolute;
+	margin-top: -8px;
+	margin-left: -8px;
+}
+
+.addmorebox{
+	position: absolute;
+	top: 50px;
+	right: 8px;
+	background: white;
+	box-shadow: 1px 1px 4px #999;
+	padding:6px;
+	border-radius: 6px; 
+	z-index: 2;
+	transition: all ease 0.3s;
+}
+.addmorebox.ng-hide{
+	background-color: transparent;
+	right:-130px;
+}
+.addmorebox a.button{
+	display: block;
+	height: 10px;
+	
+}
