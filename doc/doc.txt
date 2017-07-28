@@ -1,0 +1,6 @@
+cd app
+//下载各个插件
+npm install
+
+//添加新的页面
+gulp gen -m moduleName

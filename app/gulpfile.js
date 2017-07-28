@@ -5,6 +5,7 @@ var $ = require('gulp-load-plugins')({ lazy: true })
 var eslint  = require('gulp-eslint')
 var fs = require('fs')
 var browserSync = require('browser-sync')
+var inject = require('gulp-inject')
 //var sass = require('gulp-sass');
 //var cleanCss = require('gulp-clean-css');
 //var rename = require('gulp-rename');
@@ -54,7 +55,7 @@ gulp.task('gen', function() {
     return
   }
 
-  var entryJs = config.client + 'app.module.js'
+  var entryJs = 'app.module.js'
   tip(entryJs)
   gulp.src(entryJs)
     .pipe($.replace("'app.layout'", "'app." + moduleName + "',\n    'app.layout'"))
@@ -63,7 +64,7 @@ gulp.task('gen', function() {
     
   tip(entryJs + ' changed')
   tip(dest + ' added')
-
+  
   return gulp.src('www/tpl/*')
     // .pipe(replace(/bower_components+.+(\/[a-z0-9][^/]*\.[a-z0-9]+(\'|\"))/ig, 'js/libs$1'))
     .pipe($.replace(/template/g, moduleName))
@@ -82,3 +83,10 @@ function tip(msg) {
 function colorLog(color, msg) {
   $.util.log($.util.colors[color](msg))
 }
+gulp.task('inject', function() {
+  var indexPath = 'www/index.html'
+  var target = gulp.src(indexPath)
+  var source = gulp.src(['www/controllers/second/second.js'])
+  target.pipe(inject(source))
+  .pipe(gulp.dest('www/'))
+})
