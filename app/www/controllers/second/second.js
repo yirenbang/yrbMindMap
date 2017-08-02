@@ -1,3 +1,0 @@
-function second() {
-  alert('test')
-}

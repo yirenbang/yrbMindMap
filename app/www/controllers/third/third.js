@@ -1,3 +1,0 @@
-function third() {
-  alert('test')
-}

@@ -1,3 +1,0 @@
-function first() {
-  alert('test')
-}

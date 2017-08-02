@@ -1,3 +1,0 @@
-function fiveth() {
-  alert('test')
-}

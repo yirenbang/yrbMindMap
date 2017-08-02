@@ -1,6 +1,8 @@
-cd app
-//обть╦В╦Ж╡Е╪Ч
+О╩©1.0:
+
+cd appPro
+// Д╦▀Х╫╫node.js Г └Ф▐▓Д╩╤
 npm install
 
-//лМ╪спб╣дрЁцФ
+//  Ф╥╩Е┼═Ф╗║Е²≈
 gulp gen -m moduleName
