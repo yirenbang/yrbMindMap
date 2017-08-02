@@ -10,5 +10,5 @@ $stateProvider
       }
     }
   });
-//add router
+,
 })
