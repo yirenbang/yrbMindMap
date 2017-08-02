@@ -1,6 +1,8 @@
+﻿1.0:
+
 cd appPro
-//���ظ������
+// 下载node.js 的插件
 npm install
 
-//����µ�ҳ��
+// add module
 gulp gen -m moduleName
