@@ -3,14 +3,7 @@
 	height: 100px;
 	border-radius: 50%;
 }
-.btnB{
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-}
-.btnB span{
-	font-size: 12px;
-}
+
 .btnA span{
 	line-height: 110%;
 	font-size: 14px;
@@ -53,8 +46,17 @@
 	box-shadow: 1px 1px 4px #999;
 	color: #f95959;	
 }
+.BtnMenuR{
+	width: 36px;
+	height: 36px;
+	background-color: #f95959;
+	border-radius: 50%;
+	border: none;
+	box-shadow: 1px 1px 4px #999;
+	color: white;
+}
 
-.bar-footer .BtnMenu{
+.bar-footer .BtnMenuBotR{
 	right: 20px !important;
 	top: -10px !important;
 }
@@ -68,7 +70,7 @@
 .BtnMenuTopR1{
 	transition: all ease 0.3s;
 	transform: rotate(0deg);
-	
+	box-shadow: none;	
 }
 
 .bar-header .BtnMenuTopL{
@@ -102,12 +104,15 @@
 }
 
 /*导图第二页*/
-
+.scroll{
+	overflow: hidden;
+}
 .cirlebox{
 	height: 100%;
 }
 .cirleline{
 	position: absolute;
+	transition: all line 0.6s;
 	width: 240px;
 	height: 240px;
 	top: 50%;
@@ -116,6 +121,7 @@
 	margin-top: -120px;
 	border: 1px solid #ccc;
 	border-radius: 50%;
+
 }
 .cirleline div{
 	position: absolute;
@@ -123,28 +129,41 @@
 	left: 50%;
 	margin-top: -50px;
 	margin-left: -50px;
+	transition: all ease 0.3s;
 }
 .btnbli{
 	position: absolute;
 	margin-top: -30px;
 	margin-left: -30px;
 }
-.addbtnB{
+.btnbli button{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	line-height: 14px;
+	padding:0;
+}
+
+.btnbli button span{
+	font-size: 12px;
+}
+
+.addli{
+	position: absolute;
+	margin-top: -8px;
+	margin-left: -8px;
+}
+.addli button{
 	min-width: 16px;
     min-height: 16px;
 	width: 16px;
 	height: 16px;
 	border-radius: 50%;
 	padding:0;
-	background-color: #ccc;
+	background-color: #ccc !important;
 	color: white;
 	line-height: 16px;
 	border:none;
-}
-.addli{
-	position: absolute;
-	margin-top: -8px;
-	margin-left: -8px;
 }
 
 .addmorebox{
@@ -166,4 +185,20 @@
 	display: block;
 	height: 10px;
 	
+}
+.newNotePage{
+	height: 100%;
+}
+.btnMoalBot{
+	margin-right: 16px;
+}
+.btnClose{
+	color: #f95959;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: none;
+	margin-top:8px;
+	margin-right:6px;
+	background: transparent;
 }
