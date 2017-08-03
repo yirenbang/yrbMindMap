@@ -84,6 +84,38 @@ function genEndBack() {
   
   
 }
+
+gulp.task('gentab', function() {
+  var moduleName = args.m || args.module
+  console.log('==============' + moduleName)
+  if (!moduleName) {
+    error('use gulp gen -m/--module modulename')
+    return
+  }
+  var ucfirst = function(str) {
+    return str[0].toUpperCase() + str.substr(1)
+  }
+
+  var dest = 'app/pages/' + moduleName
+  var dest1 = 'www/pages/' + moduleName
+  
+  
+  if (fs.existsSync(dest1)) {
+    console.log('dir ' + dest + ' exists!')
+    return
+  }  
+  return gulp.src('www/tpl-tab/*')
+    // .pipe(replace(/bower_components+.+(\/[a-z0-9][^/]*\.[a-z0-9]+(\'|\"))/ig, 'js/libs$1'))
+    .pipe($.replace(/tpl-tab/g, moduleName))
+    .pipe($.replace(/tpl-tab/g, ucfirst(moduleName)))
+    .pipe($.rename(function(path) {
+      path.basename = path.basename.replace('tpl-tab', moduleName)
+      tip(dest + '/' + path.basename + path.extname + ' added')
+    }))
+    .pipe(gulp.dest(dest1))
+    .on('end', genEndBack)
+})
+
 gulp.task('gen', function() {
   var moduleName = args.m || args.module
   console.log('==============' + moduleName)
@@ -102,20 +134,7 @@ gulp.task('gen', function() {
   if (fs.existsSync(dest1)) {
     console.log('dir ' + dest + ' exists!')
     return
-  }
-
-  var entryJs = 'app.module.js'
-  var routerJs = 'www/js/route.js'
-  tip(entryJs)
-  gulp.src(entryJs)
-    .pipe($.replace("'app.layout'", "'app." + moduleName + "',\n    'app.layout'"))
-    .pipe(gulp.dest(''))
-  gulp.src(routerJs)
-    .pipe($.replace("//add router"), "  new rotue \n  //add router")
-    .pipe(gulp.dest(''))
-  tip(entryJs + ' changed')
-  tip(dest + ' added')
-  
+  }  
   return gulp.src('www/tpl/*')
     // .pipe(replace(/bower_components+.+(\/[a-z0-9][^/]*\.[a-z0-9]+(\'|\"))/ig, 'js/libs$1'))
     .pipe($.replace(/tpl/g, moduleName))
@@ -127,4 +146,3 @@ gulp.task('gen', function() {
     .pipe(gulp.dest(dest1))
     .on('end', genEndBack)
 })
-
