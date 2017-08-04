@@ -142,6 +142,7 @@
 	border-radius: 50%;
 	line-height: 14px;
 	padding:0;
+	color: white;
 }
 
 .btnbli button span{
@@ -190,7 +191,9 @@
 	height: 100%;
 }
 .btnMoalBot{
-	margin-right: 16px;
+	margin-right: 6px;
+	color: #bbb;
+	font-size: 18px !important;
 }
 .btnClose{
 	color: #f95959;
@@ -202,3 +205,100 @@
 	margin-right:6px;
 	background: transparent;
 }
+.transbar-bot{
+	background-color: rgba(255,255,255,0.9);
+}
+
+.holded-box{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index:10;
+}
+.holded-btn{
+	min-width: 40px;
+	min-height: 40px;
+	width: 42px;
+	height: 42px;
+	padding:0;
+	position: absolute;
+	border-radius: 50%;	
+}
+.holded-btn-bot{
+	background-color: #111;
+	box-shadow:0 0 12px white inset;
+	border-color: #aaa;
+	bottom: 16px;
+	right: 16px;
+}
+.holded-btn-top{
+	top:16px;
+	right: 16px;
+	background-color: #ddd;
+	box-shadow:0 0 3px white inset;
+}
+.createdbtn{
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	font-size: 12px !important;
+	color: white;
+	border:none;
+	z-index: 100;
+	margin-left: -30px;
+	margin-top: -30px;
+}
+
+
+
+
+.color-chose-box{
+	padding-top: 20px;
+	height: 100%;
+}
+.color-show{
+	width: 100%;
+	padding:40px 0;
+	text-align: center;
+}
+.color-show button{
+	width: 72px;
+	height: 72px;
+	border-radius: 50%;
+	border:none;
+	background: #f95959;
+	line-height: 14px;
+	color: white;
+}
+.color-btn{
+	display: inline-block !important;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display:block;
+	padding:1px;
+	background: white;
+	border:3px solid white;
+}
+.color-btn span{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+}
+.colors-col{
+	width:14.2%;
+	padding:10px;
+	text-align: center;
+	float: left;
+}
+.border-white{
+	border-color: white;
+}
+.title-center{
+	text-align: center !important;
+	border-bottom: 1px solid #eee;
+	top:10px !important;
+}
+

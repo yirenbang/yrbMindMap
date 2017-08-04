@@ -237,32 +237,23 @@
             $scope.holdedVar=!$scope.holdedVar;
         }
 
+        $scope.OHoldbox=document.getElementById('holdedbox');
         $scope.onHold = function (cas,bgcol,tit,e){
             if(cas=='btnbli'){
                 $scope.holdToggle();
                 $scope.oRoBox.removeEventListener("touchmove",mMove);
-                var oBtnHolded=document.getElementById('btnHolded');
+                var oBtnHolded=document.createElement('canvas');
+                oBtnHolded.width= '36';
+                oBtnHolded.height= '36';
                 oBtnHolded.style.backgroundColor=bgcol;
-                oBtnHolded.style.transform='scale(0.6,0.6';
-                oBtnHolded.innerHTML=tit;
-                console.log(e.gesture.touches[0]);
-                var touchHold=e.gesture.touches[0];
-                var tX=touchHold.clientX;
-                var tY=touchHold.clientY;
-                console.log(tX);
-                oBtnHolded.style.top=tY+'px';
-                oBtnHolded.style.left=tX+'px';
-                function btnHoldMove(event){
-                    var btnMove=event.changedTouches[0];
-                    var btnX=btnMove.clientX;
-                    var btnY=btnMove.clientY;
-                    oBtnHolded.style.top=btnY+'px';
-                    oBtnHolded.style.left=btnX+'px';
-                }
-                document.addEventListener('touchmove',btnHoldMove);
-                // document.addEventListener('touchend',function(evevt){
-                //     if()
-                // })
+                oBtnHolded.style.borderRadius='50%';
+                var ctx=oBtnHolded.getContext('2d');
+                ctx.font="5px 微软雅黑";
+                ctx.fillStyle="#ffffff";
+                ctx.fillText(tit,10,20);
+                
+                $scope.OHoldbox.appendChild(oBtnHolded);
+                console.log(e.gesture);
 
 
             }
@@ -335,10 +326,11 @@
     <div class="bar bar-footer transBar">
       <button class="button pull-right BtnMenu BtnMenuBotR" ng-click="show()"><i class="icon ion-navicon-round"></i></button>
     </div>
-    <div class="holded-box" ng-show="holdedVar">
-        <button id="del" class="button holded-btn holded-btn-bot" ></button>
-        <button class="button holded-btn holded-btn-top" ></button>
-        <button id="btnHolded" class="createdbtn"></button>
+    <div  class="holded-box" ng-show="holdedVar">
+        <button class="button holded-btn holded-btn-bot" ></i></button>
+        <button class="button holded-btn holded-btn-top" ></i></button>
+        <svg id="holdedbox" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        </svg>
     </div>
 
 
@@ -360,7 +352,7 @@
             </label>
             <div class="bar bar-footer transBar transbar-bot">
               <a class="button button-icon icon ion-android-happy btnMoalBot" ></a>
-              <a class="button button-icon icon ion-images btnMoalBot"></a>
+              <a class="button button-icon icon ion-images btnMoalBot" ></a>
               <a class="button button-icon icon ion-mic-a btnMoalBot" ></a>
               <a class="button button-icon icon ion-android-color-palette btnMoalBot" ng-click="colorBoxModal.show()"></a>
               
@@ -379,10 +371,10 @@
             <ion-header-bar class="bar bar-header transBar">
               <h1 class="title title-center">选择颜色</h1>
             </ion-header-bar>
-            <ion-content class="padding">
-                <div class="list padding color-chose-box">
+            <ion-content>
+                <div class="padding color-chose-box">
                     <div class="color-show">
-                        <button class="button" style="background-color:{{showColor}}">{{newNote.title}}</button>
+                        <button class="button" style="background-color:{{showColor}}"></button>
                     </div>
                     <div class="colorbox-raw">
                         <div class="colors-col" ng-repeat="co in colers track by $index">
