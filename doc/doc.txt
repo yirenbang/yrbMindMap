@@ -1,8 +1,12 @@
-﻿1.0:
+1.0:
 
 cd appPro
 // 下载node.js 的插件
 npm install
+bower install
 
 //  添加模块
 gulp gen -m moduleName
+
+// 查看效果
+Ionic serve -l
