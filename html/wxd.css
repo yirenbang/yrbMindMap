@@ -248,6 +248,10 @@
 	z-index: 100;
 	margin-left: -30px;
 	margin-top: -30px;
+	transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+    transition-delay: 0;
 }
 
 
@@ -300,5 +304,23 @@
 	text-align: center !important;
 	border-bottom: 1px solid #eee;
 	top:10px !important;
+}
+
+.team-popup .popup-head{
+	display: none;
+}
+.team-popup .popup{
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	padding: 0;
+}
+.team-popup .popup-buttons{	
+ 	padding: 0;
+}
+.team-popup .popup-buttons button{
+	height: 100%;
+	background: transparent;
+	color: #f95959;
 }
 

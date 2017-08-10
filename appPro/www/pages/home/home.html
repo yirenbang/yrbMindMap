@@ -1,0 +1,50 @@
+<ion-view view-title="我的思维导图">
+	<div class="bar bar-header bar-light">
+        <h1 class="title">我的思维导图</h1>
+    </div>
+    <ion-content>
+        <div class="content has-header">
+            <ul class="padding">
+                <li class="padding">
+                    <button class="button button-assertive btnA"">
+                       <i class="icon ion-plus-round"></i>
+                    </button>
+                </li>
+                <li class="row padding">
+                    <div class="col-33">
+                        <a  ui-sref='new'>
+                            <button class="button button-calm btnA" >
+                               <span>周日</span>
+                            </button>
+                        </a> 
+                    </div>
+                    <div class="col padding-right padding-top infoBoxA">
+                        <div>
+                            <div class="divRight">
+                                <strong>创建日期</strong>
+                                <p><span class="bigNum">2017/07/07</span></p>
+                            </div>
+                            <div>
+                                <strong>最后修改</strong>
+                                <p><span class="bigNum">14:28</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <strong>元素</strong>
+                            <span class="bigNum">8</span>
+                            <div class="indicateBarBox">
+                                <div class="indicateBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+            
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer transBar">
+      <button class="button pull-right BtnMenu BtnMenuBotR" ng-click="show()"><i class="icon ion-navicon-round"></i></button>
+    </div>
+</ion-view>
