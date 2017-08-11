@@ -1,0 +1,26 @@
+<ion-view view-title="addnote-tab"> 
+    <ion-header-bar class="bar bar-header transBar">
+	    <h1 class="title padding-top padding-left">新笔记</h1>
+	    <button class="button icon ion-close-round pull-right btnClose" ng-click="modal.hide()"></button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list newNotePage">
+	        <label class="item item-input">
+	          <span class="input-label">标题</span>
+	          <input ng-model="newNote.title" type="text">
+	        </label>
+	        <label class="item item-input">
+	          <textarea cols="30" rows="26"></textarea>
+	        </label>
+	        <div class="bar bar-footer transBar transbar-bot">
+	          <a class="button button-icon icon ion-android-happy btnMoalBot" ></a>
+	          <a class="button button-icon icon ion-images btnMoalBot"></a>
+	          <a class="button button-icon icon ion-mic-a btnMoalBot" ></a>
+	          <a ui-sref="choseColor" class="button button-icon icon ion-android-color-palette btnMoalBot"></a>
+	          
+	          <button class="button icon ion-checkmark-round pull-right BtnMenuR" ng-click="createNote(newNote)"></button>
+	        </div>       
+        </div>
+    </ion-content>
+  
+</ion-view>

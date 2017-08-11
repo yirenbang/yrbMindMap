@@ -1,11 +1,7 @@
 angular.module('starter')
 .controller( 'newCtrl',['$scope','$ionicPopup','$ionicModal','$ionicActionSheet','$timeout',function($scope,$ionicPopup,$ionicModal,$ionicActionSheet,$timeout,$event){
-        // 按钮切换布尔值
-    	$scope.ifClick = false;
-
-        window.onload=function(){
-            //$scope.pub();
-        }
+        
+                
         // 上拉菜单
         $scope.show = function() {
             var hideSheet = $ionicActionSheet.show({
@@ -31,22 +27,9 @@ angular.module('starter')
             // }, 2000);
         };
 
-        // 模态编辑窗口
-        $ionicModal.fromTemplateUrl('templates/modal.html', {
-            scope: $scope
-        }).then(function(modal) {
-            $scope.modal = modal;
-            $scope.pub();
-        });
-        $ionicModal.fromTemplateUrl('templates/colorBoxModal.html', {
-            scope: $scope
-        }).then(function(modal) {
-            $scope.colorBoxModal = modal;
-        });
         
         // 圆形定位函数
         $scope.degOrigin = 0;
-
 
         $scope.oRoBox=document.getElementById('rotatebox');
         $scope.oCirleLine=$scope.oRoBox.getElementsByTagName('div')[0];
@@ -56,7 +39,7 @@ angular.module('starter')
         $scope.cY=0;
 
         
-
+        //笔记数据源
         $scope.pageBNotes=[
         {'title':'周一','click':'','class':'','top':'','left':'','bgcolor':'#f95959'},
         {'title':'','click':'','class':'','top':'','left':''},
@@ -67,13 +50,16 @@ angular.module('starter')
         {'title':'周四','click':'','class':'','top':'','left':'','bgcolor':'#644534'},
         {'title':'','click':'','class':'','top':'','left':''},
         {'title':'周五','click':'','class':'','top':'','left':'','bgcolor':'#e45334'},
-        {'title':'','click':'','class':'','top':'','left':''}
-        
+        {'title':'','click':'','class':'','top':'','left':''}       
         ];
         
-        
+        //让子元素环形分布
         $scope.pub=function(){
-            if($scope.pageBNotes.length>14){
+            deg();
+        }
+        
+        function deg(){
+            if($scope.pageBNotes.length>12){
                 $scope.oCirleLine.style.top='75%';
                 $scope.oCirleLine.style.left='100%';
                 $scope.r=270;
@@ -100,27 +86,16 @@ angular.module('starter')
 
                 $scope.pageBNotes[i].top=$scope.cY+ Math.cos(2*Math.PI/ 360*(360/$scope.pageBNotes.length*i+$scope.degOrigin)) *$scope.r+'px';
             }
-        }
-        
-        $scope.newNote={};
-        $scope.newNote.title='';
-        $scope.isNew = 0;
-        $scope.createNote = function(u) { 
             
-            $scope.pageBNotes.splice($scope.isNew + 1,0,{ 'title': u.title,'click':'','class':'','top':'','left':'','bgcolor':$scope.setedColor});
-            $scope.pageBNotes.splice($scope.isNew + 2,0,{ 'title':'','click':'','class':'','top':'','left':''});
-            $scope.modal.hide();
-            $scope.pub();
-        };
-
-        $scope.addClick = function(opt, val) {
-             if (opt=='addli') {
-               $scope.isNew = val;
-               $scope.modal.show();
-             }   
         }
+
+        deg();
          
         // 按钮切换函数
+        
+        // 按钮切换布尔值
+        $scope.ifClick = false;
+
 	    $scope.myVar = false;
 	    $scope.toggle = function($event) {
 	    	$scope.ifClick = !$scope.ifClick;
@@ -148,13 +123,13 @@ angular.module('starter')
         //定时器内的运动函数
         function tmove(){
             var speed=(tarDeg-$scope.degOrigin)/10;
-            if(Math.round($scope.degOrigin)==Math.round(tarDeg)){
+            if(Math.round($scope.degOrigin)==Math.round(tarDeg) || Math.abs(speed)<2){
                 clearInterval(timer);
             }else{
-                $scope.degOrigin+=speed;
-                $scope.pub();
-                $scope.$apply();
+                $scope.degOrigin+=speed;    
             }
+            $scope.pub();
+            $scope.$apply();
         }
         //touchmove函数
         function mMove(event){
@@ -165,23 +140,23 @@ angular.module('starter')
             var dX=touchMove.clientX-oX;
             var dY=touchMove.clientY-oY;
             if(oX<$scope.cX &&Math.abs(dX)<Math.abs(dY)){
-                $scope.degOrigin+=dY * 0.5 /Math.abs(dY);
+                $scope.degOrigin+=dY * 2 /Math.abs(dY);
                 
                 
             }else if(oX>$scope.cX &&Math.abs(dX)<Math.abs(dY)){
-                $scope.degOrigin-=dY * 0.5 /Math.abs(dY);
+                $scope.degOrigin-=dY * 2 /Math.abs(dY);
                 
             }else if(oY<$scope.cY &&Math.abs(dX)>Math.abs(dY)){
-                $scope.degOrigin-=dX * 0.5 /Math.abs(dX);
+                $scope.degOrigin-=dX * 2 /Math.abs(dX);
                 
             }else if(oY>$scope.cY &&Math.abs(dX)>Math.abs(dY)){
-                $scope.degOrigin+=dX * 0.5 /Math.abs(dX);
+                $scope.degOrigin+=dX * 2 /Math.abs(dX);
                 
             }
             $scope.pub();
             $scope.$apply();
         }
-
+        //拖动旋转
         var startTime=0;
         $scope.oRoBox.addEventListener("touchstart",function(event){
             if(jz==0){
@@ -192,19 +167,18 @@ angular.module('starter')
             startTime=event.timeStamp;
             oX=touch.clientX;
             oY=touch.clientY;
-            console.log(oX);
 
             $scope.oRoBox.addEventListener("touchmove",mMove);
 
         })
-
+        //拖动结束时判断是否继续运动
         $scope.oRoBox.addEventListener("touchend",function(event){
             clearInterval(timer);
             var touchEnd=event.changedTouches[0];
             var touchTime=event.timeStamp;
             disX=touchEnd.clientX-oX;
             disY=touchEnd.clientY-oY;
-            if(touchTime-startTime<1000){
+            if(touchTime-startTime<800){
                if(oX<$scope.cX &&Math.abs(disX)<Math.abs(disY)){
                     tarDeg=$scope.degOrigin+disY;
                     timer=setInterval(tmove,30);
@@ -223,6 +197,8 @@ angular.module('starter')
 
         })
 
+        //长按删除或复制
+
         var oDelBtn=document.getElementById('delBtn');
         var oCopyBtn=document.getElementById('copyBtn');
         var delbX=oDelBtn.offsetLeft;
@@ -236,6 +212,81 @@ angular.module('starter')
         // }
         $scope.bL='';
         $scope.bT='';
+        
+
+        $scope.onHold = function (cas,bgcol,tit,bl,bt,e){
+            $scope.bL=bl;
+            $scope.bT=bt;
+            if(cas=='btnbli'){
+                $scope.holdedVar=true;
+                $scope.oRoBox.removeEventListener("touchmove",mMove);
+                var oBtnHolded=document.getElementById('btnHolded');
+                oBtnHolded.style.backgroundColor = bgcol;
+                oBtnHolded.style.transform = 'scale(0.6,0.6)';
+                oBtnHolded.style['-webkit-transform']='scale(0.6,0.6)';
+                
+                oBtnHolded.innerHTML = tit;
+                var touchHold=e.gesture.touches[0];
+                var tX=touchHold.clientX;
+                var tY=touchHold.clientY;
+                oBtnHolded.style.top=tY+'px';
+                oBtnHolded.style.left=tX+'px';
+                function btnHoldMove(event){
+                    var btnMove=event.changedTouches[0];
+                    var btnX=btnMove.clientX;
+                    var btnY=btnMove.clientY;
+                    oBtnHolded.style.top=btnY+'px';
+                    oBtnHolded.style.left=btnX+'px';
+                    if(Math.abs(oBtnHolded.offsetTop-delbY)<25 && Math.abs(oBtnHolded.offsetLeft-delbX)<25){
+                        
+                        oBtnHolded.style.transform='scale(0.3,0.3)';
+                        oBtnHolded.style['-webkit-transform']='scale(0.3,0.3)'; 
+                        
+                        oBtnHolded.style.top = delbY + 21 +'px';
+                        oBtnHolded.style.left = delbX + 21 +'px';
+    
+                    }else if(Math.abs(oBtnHolded.offsetTop-copybY)<25 && Math.abs(oBtnHolded.offsetLeft-copybX)<25){
+                        oBtnHolded.style.top= copybY + 21 +'px';
+                        oBtnHolded.style.left= copybX + 21 +'px';
+                    }else{
+                        
+                        oBtnHolded.style.transform='scale(0.6,0.6)';
+                        oBtnHolded.style['-webkit-transform']='scale(0.6,0.6)';
+                    }
+                    
+
+                }
+                document.addEventListener('touchmove',btnHoldMove);
+
+                document.addEventListener('touchend',function(evevt){ 
+                    if(Math.abs(oBtnHolded.offsetTop-delbY)<25 && Math.abs(oBtnHolded.offsetLeft-delbX)<25){
+                        
+                        oBtnHolded.style.transform='scale(0.3,0.3)';
+                        oBtnHolded.style['-webkit-transform']='scale(0.3,0.3)';
+                        
+                        oBtnHolded.style.top = delbY + 21 +'px';
+                        oBtnHolded.style.left = delbX + 21 +'px';
+                        $scope.delConfirm();
+    
+                    }else if(Math.abs(oBtnHolded.offsetTop-copybY)<25 && Math.abs(oBtnHolded.offsetLeft-copybX)<25){
+                        oBtnHolded.style.top= copybY + 21 +'px';
+                        oBtnHolded.style.left= copybX + 21 +'px';
+                    }else{
+                        
+                        oBtnHolded.style.transform='scale(0.6,0.6)';
+                        oBtnHolded.style['-webkit-transform']='scale(0.6,0.6)';
+                        oBtnHolded.style.top=$scope.bT;
+                        oBtnHolded.style.left=$scope.bL;
+                        $scope.holdedVar=false;
+                        $scope.$apply();
+                    }      
+                        
+                })
+            }
+            
+        }
+
+
         $scope.delConfirm=function(){
             var delPopup=$ionicPopup.show({
                 scope: $scope,
@@ -260,96 +311,6 @@ angular.module('starter')
 
         }
 
-
-        $scope.onHold = function (cas,bgcol,tit,bl,bt,e){
-            $scope.bL=bl;
-            $scope.bT=bt;
-            if(cas=='btnbli'){
-                $scope.holdedVar=true;
-                $scope.oRoBox.removeEventListener("touchmove",mMove);
-                var oBtnHolded=document.getElementById('btnHolded');
-                oBtnHolded.style.backgroundColor = bgcol;
-                oBtnHolded.style.transform = 'scale(0.6,0.6)';
-                
-                oBtnHolded.innerHTML = tit;
-                var touchHold=e.gesture.touches[0];
-                var tX=touchHold.clientX;
-                var tY=touchHold.clientY;
-                oBtnHolded.style.top=tY+'px';
-                oBtnHolded.style.left=tX+'px';
-                function btnHoldMove(event){
-                    var btnMove=event.changedTouches[0];
-                    var btnX=btnMove.clientX;
-                    var btnY=btnMove.clientY;
-                    oBtnHolded.style.top=btnY+'px';
-                    oBtnHolded.style.left=btnX+'px';
-                    if(Math.abs(oBtnHolded.offsetTop-delbY)<25 && Math.abs(oBtnHolded.offsetLeft-delbX)<25){
-                        //oBtnHolded.style.transitionProperty= 'top,left,transform';
-                        oBtnHolded.style.transform='scale(0.3,0.3)';
-                        
-                        oBtnHolded.style.top = delbY + 21 +'px';
-                        oBtnHolded.style.left = delbX + 21 +'px';
-    
-                    }else if(Math.abs(oBtnHolded.offsetTop-copybY)<25 && Math.abs(oBtnHolded.offsetLeft-copybX)<25){
-                        oBtnHolded.style.top= copybY + 21 +'px';
-                        oBtnHolded.style.left= copybX + 21 +'px';
-                    }else{
-                        //oBtnHolded.style.transitionProperty= 'transform';
-                        oBtnHolded.style.transform='scale(0.6,0.6)';
-                    }
-                    
-
-                }
-                document.addEventListener('touchmove',btnHoldMove);
-
-                document.addEventListener('touchend',function(evevt){ 
-                    if(Math.abs(oBtnHolded.offsetTop-delbY)<25 && Math.abs(oBtnHolded.offsetLeft-delbX)<25){
-                        //oBtnHolded.style.transitionProperty= 'top,left,transform';
-                        oBtnHolded.style.transform='scale(0.3,0.3)';
-                        
-                        oBtnHolded.style.top = delbY + 21 +'px';
-                        oBtnHolded.style.left = delbX + 21 +'px';
-                        $scope.delConfirm();
-    
-                    }else if(Math.abs(oBtnHolded.offsetTop-copybY)<25 && Math.abs(oBtnHolded.offsetLeft-copybX)<25){
-                        oBtnHolded.style.top= copybY + 21 +'px';
-                        oBtnHolded.style.left= copybX + 21 +'px';
-                    }else{
-                        //oBtnHolded.style.transitionProperty= 'transform';
-                        oBtnHolded.style.transform='scale(0.6,0.6)';
-                        oBtnHolded.style.top=$scope.bT;
-                        oBtnHolded.style.left=$scope.bL;
-                        $scope.holdedVar=false;
-                        $scope.$apply();
-                    }      
-                        
-                })
-            }
-            
-        }
-
-
-
-        $scope.colers=['#f95959','#a1afc9','#425066','#5c9291','#478384','#888e7e','#47585c','#494a41','#6b6f59','#6c848d','#5b7e91','#a69abd','#956f29','#9d896c','#393e4f','#203744','#9e9478','#594255','#a25768','#8f8667','#918754','#84b9cb','#98623c','#698aab','#c8c2be','#83ccd2','#b3ada0','#8c8861','#c53d43','#e95464','#95483f','#0094c8','#c5c56a','#783c1d','#765c47','#6f514c','#9e3d3f','#9ba88d','#769164','#808080','#88ada6','#a78e44','#725e82','#549688','#424c50','#7c4b00','#a88462','#425066','#21a675']
-
-        $scope.oColorRow=document.getElementsByClassName('colorbox-raw')[0];
-
-        $scope.aColorCol=document.getElementsByClassName('color-btn');
-
-        $scope.setedColor='';
-        $scope.setColor=function(bco){
-            this.coval=bco;
-            for(var i=0;i<$scope.aColorCol.length;i++){
-                $scope.aColorCol[i].style.borderColor='white';
-            }
-
-            this.coval=bco;
-            $scope.showColor=bco;
-        }
-        $scope.outputColor=function(setCol){
-            $scope.setedColor=setCol;
-            $scope.colorBoxModal.hide();
-        }
 
         
     }])

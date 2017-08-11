@@ -1,0 +1,22 @@
+<ion-view view-title="choseColor-tab">
+  <ion-modal-view class='padding'>
+        <ion-header-bar class="bar bar-header transBar">
+          <h1 class="title title-center">选择颜色</h1>
+        </ion-header-bar>
+        <ion-content class="padding">
+            <div class="list padding color-chose-box">
+                <div class="color-show">
+                    <button class="button" style="background-color:{{showColor}}">{{newNote.title}}</button>
+                </div>
+                <div class="colorbox-raw">
+                    <div class="colors-col" ng-repeat="co in colers track by $index">
+                        <a href="#" class="color-btn" style="border-color:{{coval}}" ng-click="setColor(co,$event)"><span style="background-color:{{co}}"></span></a>
+                    </div>
+                </div>
+                <div class="bar bar-footer transBar transbar-bot">
+                  <button class="button icon ion-checkmark-round pull-right BtnMenuR" ng-click="outputColor(showColor)"></button>
+                </div>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</ion-view>

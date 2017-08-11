@@ -158,7 +158,7 @@
         //定时器内的运动函数
         function tmove(){
             var speed=(tarDeg-$scope.degOrigin)/10;
-            if(Math.round($scope.degOrigin)==Math.round(tarDeg)){
+            if(Math.round($scope.degOrigin)==Math.round(tarDeg) ||Math.abs(speed)<2){
                 clearInterval(timer);
             }else{
                 $scope.degOrigin+=speed;
@@ -175,17 +175,17 @@
             var dX=touchMove.clientX-oX;
             var dY=touchMove.clientY-oY;
             if(oX<$scope.cX &&Math.abs(dX)<Math.abs(dY)){
-                $scope.degOrigin+=dY * 0.5 /Math.abs(dY);
+                $scope.degOrigin+=dY * 0.8 /Math.abs(dY);
                 
                 
             }else if(oX>$scope.cX &&Math.abs(dX)<Math.abs(dY)){
-                $scope.degOrigin-=dY * 0.5 /Math.abs(dY);
+                $scope.degOrigin-=dY * 0.8 /Math.abs(dY);
                 
             }else if(oY<$scope.cY &&Math.abs(dX)>Math.abs(dY)){
-                $scope.degOrigin-=dX * 0.5 /Math.abs(dX);
+                $scope.degOrigin-=dX * 0.8 /Math.abs(dX);
                 
             }else if(oY>$scope.cY &&Math.abs(dX)>Math.abs(dY)){
-                $scope.degOrigin+=dX * 0.5 /Math.abs(dX);
+                $scope.degOrigin+=dX * 0.8 /Math.abs(dX);
                 
             }
             $scope.pub();

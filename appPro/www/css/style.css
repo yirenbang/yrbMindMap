@@ -66,11 +66,15 @@
 	top: 20px !important;
 	font-size: 14px;
 	transition: all ease 0.3s;
+	-webkit-transition: all ease 0.3s;
 	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
 }
 .BtnMenuTopR1{
 	transition: all ease 0.3s;
+	-webkit-transition: all ease 0.3s;
 	transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
 	box-shadow: none;	
 }
 
@@ -104,6 +108,10 @@
 	margin-top: -20px;
 }
 
+.scroll-bar{
+	display: none;
+}
+
 /*导图第二页*/
 .scroll{
 	overflow: hidden;
@@ -115,6 +123,7 @@
 .cirleline{
 	position: absolute;
 	transition: all line 0.6s;
+	-webkit-transition: all line 0.6s;
 	width: 240px;
 	height: 240px;
 	top: 50%;
@@ -132,15 +141,16 @@
 	margin-top: -50px;
 	margin-left: -50px;
 	transition: all ease 0.3s;
+	-webkit-transition: all ease 0.3s;
 }
 .btnbli{
 	position: absolute;
-	margin-top: -30px;
-	margin-left: -30px;
+	margin-top: -40px;
+	margin-left: -40px;
 }
 .btnbli button{
-	width: 60px;
-	height: 60px;
+	width: 80px;
+	height: 80px;
 	border-radius: 50%;
 	line-height: 14px;
 	padding:0;
@@ -179,6 +189,7 @@
 	border-radius: 6px; 
 	z-index: 2;
 	transition: all ease 0.3s;
+	-webkit-transition: all ease 0.3s;
 }
 .addmorebox.ng-hide{
 	background-color: transparent;
@@ -251,9 +262,13 @@
 	margin-left: -30px;
 	margin-top: -30px;
 	transition-property: transform;
+	-webkit-transition-property: transform;
     transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
     transition-timing-function: linear;
+    -webkit-transition-timing-function: linear;
     transition-delay: 0;
+    -webkit-transition-delay: 0;
 }
 
 
@@ -320,8 +335,11 @@
 .team-popup .popup-buttons{	
  	padding: 0;
 }
-.team-popup .popup-buttons button{
+.team-popup .popup-buttons{
 	height: 100%;
+}
+.team-popup .popup-buttons button{
+	height: 100% !important;
 	background: transparent;
 	color: #f95959;
 }

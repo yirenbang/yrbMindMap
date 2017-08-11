@@ -1,4 +1,4 @@
-<ion-view >
+<ion-view ng-click="addboxhid()">
   <div class="bar bar-header transBar">
         <button class="button icon ion-close-round pull-right BtnMenu BtnMenuTopR{{ifClick?1:''}}" ng-click="toggle($event)"></button>
         <button class="button icon ion-android-home BtnMenu BtnMenuTopL"><a href="index.html"></a></button>
@@ -14,7 +14,7 @@
         <div class="cirlebox" id="rotatebox">
             <div class="cirleline">
                 <div>
-					<a href='#'>
+					<a ui-sref='addnote'>
                         <button class="button button-calm btnA" >
                            <span>周日</span>
                         </button>
@@ -23,8 +23,8 @@
             </div>
             <ul>
                 <li ng-repeat="x in pageBNotes track by $index" class={{x.class}} style="left:{{x.left}};top:{{x.top}}">
-                    <a href='#'>
-                        <button class="button btnB" style="background-color:{{x.bgcolor}}" ng-click="addClick(x.class,$index)" on-hold="onHold(x.class,x.bgcolor,x.title,x.left,x.top,$event)">
+                    <a href="" ="{{x.class=='addli'?'/#choseColor':'/#addnote'}}">
+                        <button class="button btnB" style="background-color:{{x.bgcolor}}"  on-hold="onHold(x.class,x.bgcolor,x.title,x.left,x.top,$event)">
                            <span>{{x.title}}</span>
                         </button>
                     </a>
@@ -41,59 +41,5 @@
         <button id="btnHolded" class="createdbtn"></button>
     </div>
 
-
-
-    <script id="templates/modal.html" type="text/ng-template">
-      <ion-modal-view>
-        <ion-header-bar class="bar bar-header transBar">
-          <h1 class="title padding-top padding-left">新笔记</h1>
-          <button class="button icon ion-close-round pull-right btnClose" ng-click="modal.hide()"></button>
-        </ion-header-bar>
-        <ion-content class="padding">
-          <div class="list newNotePage">
-            <label class="item item-input">
-              <span class="input-label">标题</span>
-              <input ng-model="newNote.title" type="text">
-            </label>
-            <label class="item item-input">
-              <textarea cols="30" rows="26"></textarea>
-            </label>
-            <div class="bar bar-footer transBar transbar-bot">
-              <a class="button button-icon icon ion-android-happy btnMoalBot" ></a>
-              <a class="button button-icon icon ion-images btnMoalBot"></a>
-              <a class="button button-icon icon ion-mic-a btnMoalBot" ></a>
-              <a class="button button-icon icon ion-android-color-palette btnMoalBot" ng-click="colorBoxModal.show()"></a>
-              
-
-              <button class="button icon ion-checkmark-round pull-right BtnMenuR" ng-click="createNote(newNote)"></button>
-            </div>
-            
-            
-          </div>
-        </ion-content>
-      </ion-modal-view>
-    </script>
-
-    <script id="templates/colorBoxModal.html" type="text/ng-template">
-        <ion-modal-view class='padding'>
-            <ion-header-bar class="bar bar-header transBar">
-              <h1 class="title title-center">选择颜色</h1>
-            </ion-header-bar>
-            <ion-content class="padding">
-                <div class="list padding color-chose-box">
-                    <div class="color-show">
-                        <button class="button" style="background-color:{{showColor}}">{{newNote.title}}</button>
-                    </div>
-                    <div class="colorbox-raw">
-                        <div class="colors-col" ng-repeat="co in colers track by $index">
-                            <a href="#" class="color-btn" style="border-color:{{coval}}" ng-click="setColor(co,$event)"><span style="background-color:{{co}}"></span></a>
-                        </div>
-                    </div>
-                    <div class="bar bar-footer transBar transbar-bot">
-                      <button class="button icon ion-checkmark-round pull-right BtnMenuR" ng-click="outputColor(showColor)"></button>
-                    </div>
-                </div>
-            </ion-content>
-        </ion-modal-view>  
-    </script>
 </ion-view>
+
