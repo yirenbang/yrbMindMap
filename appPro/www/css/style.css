@@ -12,6 +12,14 @@
 .divRight{
 	float: right;
 }
+
+.scroll-bar{
+	display: none !important;
+}
+.scroll-bar-v{
+	display: none !important;
+	width:0 !important;
+}
 .indicateBarBox{
 	width: 70%;
 	height: 4px;
@@ -108,9 +116,6 @@
 	margin-top: -20px;
 }
 
-.scroll-bar{
-	display: none;
-}
 
 /*导图第二页*/
 .scroll{

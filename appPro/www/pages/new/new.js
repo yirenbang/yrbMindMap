@@ -38,7 +38,6 @@ angular.module('starter')
         $scope.cX=0;
         $scope.cY=0;
 
-        
         //笔记数据源
         $scope.pageBNotes=[
         {'title':'周一','click':'','class':'','top':'','left':'','bgcolor':'#f95959'},
