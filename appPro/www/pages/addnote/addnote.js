@@ -1,6 +1,6 @@
 angular.module('starter')
-.controller('addnoteCtrl', ['$scope', function($scope) {
-
+.controller('addnoteCtrl', ['$scope', 'cfg', function($scope, cfg) {
+alert(cfg.test)
 	
     $scope.newNote={};
     $scope.newNote.title='';
