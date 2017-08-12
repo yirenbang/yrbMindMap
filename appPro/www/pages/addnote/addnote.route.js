@@ -2,7 +2,7 @@ angular.module('starter').config(function($stateProvider) {
 	
 $stateProvider
   .state('addnote', {
-    url: "/addnote",
+    url: "/addnote/:btnId",
     templateUrl: 'pages/addnote/addnote.html',
     controller: 'addnoteCtrl'
   });

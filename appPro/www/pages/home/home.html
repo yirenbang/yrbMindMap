@@ -6,15 +6,17 @@
         <div class="content has-header">
             <ul class="padding">
                 <li class="padding">
-                    <button class="button button-assertive btnA"">
-                       <i class="icon ion-plus-round"></i>
-                    </button>
+                    <a ui-sref="addnote({'type':0})">
+                        <button class="button button-assertive btnA"">
+                           <i class="icon ion-plus-round"></i>
+                        </button>
+                    </a>  
                 </li>
-                <li class="row padding">
+                <li class="row padding" ng-repeat='x in paNotes track by $index'>
                     <div class="col-33">
-                        <a  ui-sref='new'>
-                            <button class="button button-calm btnA" >
-                               <span>周日</span>
+                        <a  ui-sref="new({'noteId':$index})">
+                            <button class="button btnA" style="background-color:{{x.color}}">
+                               <span>{{x.title}}</span>
                             </button>
                         </a> 
                     </div>
@@ -22,18 +24,18 @@
                         <div>
                             <div class="divRight">
                                 <strong>创建日期</strong>
-                                <p><span class="bigNum">2017/07/07</span></p>
+                                <p><span class="bigNum">{{x.createTime!=''?x.createTime:ctime}}</span></p>
                             </div>
                             <div>
                                 <strong>最后修改</strong>
-                                <p><span class="bigNum">14:28</span></p>
+                                <p><span class="bigNum">{{x.createTime!=''?x.lastTime:ltime}}</span></p>
                             </div>
                         </div>
                         <div>
                             <strong>元素</strong>
-                            <span class="bigNum">8</span>
+                            <span class="bigNum">{{x.children.length/2}}</span>
                             <div class="indicateBarBox">
-                                <div class="indicateBar"></div>
+                                <div class="indicateBar" style="width:{{x.children.length/30*136}}px"></div>
                             </div>
                         </div>
                     </div>

@@ -16,15 +16,15 @@
                 <div>
 					<a ui-sref='addnote'>
                         <button class="button button-calm btnA" >
-                           <span>周日</span>
+                           <span>{{paNotes[0].title}}</span>
                         </button>
                     </a>
                 </div>
             </div>
             <ul>
-                <li ng-repeat="x in pageBNotes track by $index" class={{x.class}} style="left:{{x.left}};top:{{x.top}}">
-                    <a href="{{x.class=='addli'?'/#addnote':'/#choseColor'}}">
-                        <button class="button btnB" style="background-color:{{x.bgcolor}}"  on-hold="onHold(x.class,x.bgcolor,x.title,x.left,x.top,$event)">
+                <li ng-repeat="x in pbNotes track by $index" class={{x.class}} style="left:{{x.left}};top:{{x.top}}">
+                    <a ng-click="addClick(x.class,$index)">
+                        <button class="button btnB" style="background-color:{{x.bgcolor}}"  on-hold="onHold(x.class,x.bgcolor,x.title,x.left,x.top,$index,$event)">
                            <span>{{x.title}}</span>
                         </button>
                     </a>

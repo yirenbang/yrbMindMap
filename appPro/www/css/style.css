@@ -160,6 +160,8 @@
 	line-height: 14px;
 	padding:0;
 	color: white;
+	background-color: #f95959;
+	padding:8px;
 }
 
 .btnbli button span{
@@ -263,6 +265,7 @@
 	font-size: 12px !important;
 	color: white;
 	border:none;
+	background-color: #999;
 	z-index: 100;
 	margin-left: -30px;
 	margin-top: -30px;
