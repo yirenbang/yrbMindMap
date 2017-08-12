@@ -2,9 +2,10 @@ angular.module('starter').config(function($stateProvider) {
 	
 $stateProvider
   .state('addnote', {
-    url: "/addnote/:btnId",
+    url: "/addnote",
     templateUrl: 'pages/addnote/addnote.html',
-    controller: 'addnoteCtrl'
+    controller: 'addnoteCtrl',
+    params:{'btnId':null,'noteId':null}
   });
 //add router
 })

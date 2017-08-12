@@ -1,11 +1,10 @@
 angular.module('starter')
 .controller( 'newCtrl',['$scope','$state','$stateParams','dataBase','$ionicPopup','$ionicActionSheet','$timeout',function($scope,$state,$stateParams,dataBase,$ionicPopup,$ionicActionSheet,$timeout,$event){
-    $scope.noteId=$stateParams.noteId; 
-    console.log($scope.noteId);     
+    $scope.noteId=$stateParams.noteId;      
     //获取本地存储的笔记
     $scope.paNotes = dataBase.getData();
     $scope.pbNotes = $scope.paNotes[$scope.noteId].children;
-    console.log($scope.pbNotes);
+ 
 
     // 上拉菜单
     $scope.show = function() {
@@ -315,8 +314,7 @@ angular.module('starter')
             $scope.pbNotes.splice($scope.holdBtnId,2);
             
             dataBase.setData(0,$scope.paNotes);
-            deg();
-            console.log($scope.holdBtnId);
+            $scope.pub();
 
         })
         // $setTimeout(function() {

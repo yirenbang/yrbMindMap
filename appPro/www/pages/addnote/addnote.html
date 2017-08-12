@@ -16,7 +16,7 @@
 	          <a class="button button-icon icon ion-android-happy btnMoalBot" ></a>
 	          <a class="button button-icon icon ion-images btnMoalBot"></a>
 	          <a class="button button-icon icon ion-mic-a btnMoalBot" ></a>
-	          <a ui-sref="choseColor" class="button button-icon icon ion-android-color-palette btnMoalBot"></a>
+	          <a class="button button-icon icon ion-android-color-palette btnMoalBot" ng-click="colorBoxModal.show()"></a>
 	          
 	          <button class="button icon ion-checkmark-round pull-right BtnMenuR" ng-click="createNote(newNote)"></button>
 	        </div>       
@@ -24,3 +24,26 @@
     </ion-content>
   
 </ion-view>
+
+<script id="templates/colorBoxModal.html" type="text/ng-template">
+    <ion-modal-view class='padding'>
+        <ion-header-bar class="bar bar-header transBar">
+          <h1 class="title title-center">选择颜色</h1>
+        </ion-header-bar>
+        <ion-content class="padding">
+            <div class="list padding color-chose-box">
+                <div class="color-show">
+                    <button class="button" style="background-color:{{showColor}}">{{newNote.title}}</button>
+                </div>
+                <div class="colorbox-raw">
+                    <div class="colors-col" ng-repeat="co in colers track by $index">
+                        <a href="#" class="color-btn" style="border-color:{{coval}}" ng-click="setColor(co,$event)"><span style="background-color:{{co}}"></span></a>
+                    </div>
+                </div>
+                <div class="bar bar-footer transBar transbar-bot">
+                  <button class="button icon ion-checkmark-round pull-right BtnMenuR" ng-click="outputColor(showColor)"></button>
+                </div>
+            </div>
+        </ion-content>
+    </ion-modal-view>  
+</script>

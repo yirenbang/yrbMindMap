@@ -1,7 +1,7 @@
 <ion-view ng-click="addboxhid()">
   <div class="bar bar-header transBar">
         <button class="button icon ion-close-round pull-right BtnMenu BtnMenuTopR{{ifClick?1:''}}" ng-click="toggle($event)"></button>
-        <button class="button icon ion-android-home BtnMenu BtnMenuTopL"><a href="index.html"></a></button>
+        <button class="button icon ion-android-home BtnMenu BtnMenuTopL" ui-sref="home"></button>
     </div>
     <div class="addmorebox" ng-show="myVar">
     	<a class="button icon-right ion-images button-clear button-stable">选取图片</a>
